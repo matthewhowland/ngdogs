@@ -1,10 +1,10 @@
 (function(){
   angular.module('ngdogs')
-          .facotry('DogsService', DogsService);
+          .factory('DogsService', DogsService);
 
   DogsService.$inject = ['$http'];
 
-  function DogsServe($http){
+  function DogsService($http){
     var o = {
       create: createDogs,
       readAll: getAll,
@@ -15,7 +15,7 @@
     return o;
 
     function createDogs(){}
-    function getall(){
+    function getAll(){
       return $http.get('https://quiet-refuge-27140.herokuapp.com/todos')
                   .then(function(response){
                     todos = response.data;
