@@ -5,6 +5,7 @@
   DogsService.$inject = ['$http'];
 
   function DogsService($http){
+    var baseUrl = 'https://dogparkbuddy.herokuapp.com/'
     var o = {
       create: createDogs,
       readAll: getAll,
@@ -14,14 +15,32 @@
     };
     return o;
 
-    function createDogs(){}
+    function createDogs(newDog){
+      return $http.post(baseUrl + 'dogs/', newDog)
+              .then(function(response){
+                console.log(response);
+                getAll();
+              });
+    }
+
     function getAll(){
-      return $http.get('https://quiet-refuge-27140.herokuapp.com/todos')
+      return $http.get(baseUrl + 'dogs')
                   .then(function(response){
-                    todos = response.data;
+                    o.dogs = response.data;
                   });
     }
-    function updateDogs(){}
-    function deleteDogs(){}
+    function updateDogs(id, newDog){
+      return $http.put(baseUrl+'dogs/'+id, newDog)
+              .then(function(response){
+                console.log(response);
+                getAll();
+              });
+    }
+    function deleteDogs(id){}
+      return $http.delete(baseUrl+'dogs/'+id)
+                  .then(function(response){
+                    console.log(response);
+                    getAll();
+                  })
   }
 })()

@@ -13,7 +13,9 @@
                 dogs = DogsService.dogs;
                 console.log(dogs);
               });
-    console.log(dogs);
+DogsService.create();
+DogsService.delete();
+DogsService.update();
 
   }
 })();
