@@ -7,8 +7,65 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
-  <div ng-controller='MainController'>
-<input type="text" ng-model='message'>
+  <div class='container' ng-controller='MainController'>
+    <div class='row'>
+      <div class='col-md-8 col-md-offset-2'>
+        <div clsas='form-group'>
+          <label>Dog Name:</label>
+          <input type="text" class='form-control' ng-model='dogName'>
+          <label>Breed:</label>
+          <input type="text" class='form-control' ng-model='breed'>
+          <label>Size:</label>
+          <input type="text" class='form-control' ng-model='size'>
+          <label>Color:</label>
+          <input type="text" class='form-control' ng-model='color'>
+          <label>Age:</label>
+          <input type="text" class='form-control' ng-model='age'>
+          <label>Gender:</label>
+          <input type="text" class='form-control' ng-model='gender'>
+          <label>Likes Dogs:</label>
+          <input type="text" class='form-control' ng-model="likesDogs">
+          <label>Likes Humans:</label>
+          <input type="text" class='form-control' ng-model='likesHumans'>
+          <label>Likes Kids:</label>
+          <input type="text" class='form-control' ng-model='likesKids'>
+          <label>Wants Playmates:</label>
+          <input type="text" class='form-control' ng-model='wantsPlaymates'>
+          <label>Notes:</label>
+          <input type="text" class='form-control' ng-model='notes'>
+        </div>
+      </div>
+      <div class="col-md-8 col-md-offset-2">
+        <button class="btn btn-warning btn-block" ng-click='create(dogName,
+                                                                    breed,
+                                                                    size,
+                                                                    color,
+                                                                    age,
+                                                                    gender,
+                                                                    likeDogs,
+                                                                    likesHumans,
+                                                                    likesKids,
+                                                                    wantsPlaymates,
+                                                                    notes)'>Post</button>
+      </div>
+    </div>
+
+    <div class="row" ng-repeat='eachItem in dogs'>
+        <div class="jumbotron" data-id='{{eachItem.id}}'>
+          <button class="btn btn-sm btn-danger pull-right" ng-click='delete(eachItem.id)'>X</button>
+          <h1>{{eachItem.dogName}}</h1>
+          <p><strong><font size="8">Breed: </strong>{{eachItem.breed}}<br>
+            <strong>Size: </strong>{{eachItem.size}}<br>
+            <strong>Color: </strong>{{eachItem.color}}<br>
+            <strong>Age: </strong>{{eachItem.age}}<br>
+            <strong>Gender: </strong>{{eachItem.gender}}<br>
+            <strong>Likes Dogs: </strong>{{eachItem.likesDogs}}<br>
+            <strong>Likes Humans: </strong>{{eachItem.likesHumans}}<br>
+            <strong>Likes Kids: </strong>{{eachItem.likesKids}}<br>
+            <strong>Wants Playmates: </strong>{{eachItem.wantsPlaymates}}<br>
+            <strong>Notes: </strong>{{eachItem.notes}}</p>
+        </div>
+      </div>
 {{message}}
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
